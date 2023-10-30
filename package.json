@@ -1,5 +1,6 @@
 {
     "name": "@3dsteam/react-intl-number-input",
+    "packageManager": "yarn@4.0.1",
     "version": "1.0.0",
     "description": "A React component that allows to use input `type=number` with a localized format",
     "main": "dist/index.js",
@@ -12,7 +13,6 @@
     "repository": "https://github.com/3dsteam/react-intl-number-input.git",
     "author": "Lorenzo Bonatti <lorenzo.bonatti@3ds.team>",
     "license": "MIT",
-    "private": false,
     "scripts": {
         "test": "jest --watchAll",
         "build": "tsc"
