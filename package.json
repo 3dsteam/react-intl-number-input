@@ -36,6 +36,6 @@
         "typescript": "^5.1.6"
     },
     "dependencies": {
-        "intl-number-input": "^1.4.0"
+        "intl-number-input": "^1.4.1"
     }
 }

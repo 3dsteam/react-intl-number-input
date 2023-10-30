@@ -13,7 +13,7 @@ __metadata:
     "@testing-library/react": "npm:^14.0.0"
     "@types/jest": "npm:^29.5.2"
     "@types/react": "npm:^18.2.14"
-    intl-number-input: "npm:^1.4.0"
+    intl-number-input: "npm:^1.4.1"
     jest: "npm:^29.6.1"
     jest-environment-jsdom: "npm:^29.6.1"
     prettier: "npm:^3.0.0"
@@ -2489,10 +2489,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intl-number-input@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "intl-number-input@npm:1.4.0"
-  checksum: fb386c4f327324c8dcc7136356119cc40b0ccac2b49fca7ba8ad2820b3d9407c37d8b431f85a2cf85487f4e5511ff96595d988102ea08aaf96838d92c4e1d42d
+"intl-number-input@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "intl-number-input@npm:1.4.1"
+  checksum: 2dde4056ecbcf666ac27090f63c7a2ba1f09e3349a8bb586da7c0be4c9eae3df2770d502105db6d2c15b35f3c0f5cb594538c421eb45a653e243f06be6f5ec28
   languageName: node
   linkType: hard
 
