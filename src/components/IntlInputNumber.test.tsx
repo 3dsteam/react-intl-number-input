@@ -1,11 +1,12 @@
+import { vi } from "vitest";
 import { fireEvent, render } from "@testing-library/react";
-import "@testing-library/jest-dom";
+
 import { IntlInputNumber } from "./IntlInputNumber";
 import { NumberFormatStyle } from "intl-number-input";
 
 describe("IntlInputNumber", () => {
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     it("renders input element", () => {
@@ -14,19 +15,19 @@ describe("IntlInputNumber", () => {
     });
 
     it("renders initial value", () => {
-        const { getByTestId } = render(<IntlInputNumber value={1234.56} onChange={jest.fn()} />);
+        const { getByTestId } = render(<IntlInputNumber value={1234.56} onChange={vi.fn} />);
         expect(getByTestId("intl-input-number")).toHaveValue("1,234.56");
     });
 
     it("renders initial value with specified locale", () => {
         const { getByTestId } = render(
-            <IntlInputNumber value={1234.56} onChange={jest.fn()} options={{ locale: "it-IT" }} />
+            <IntlInputNumber value={1234.56} onChange={vi.fn} options={{ locale: "it-IT" }} />,
         );
         expect(getByTestId("intl-input-number")).toHaveValue("1.234,56");
     });
 
     it("callbacks onChange when input value changes", () => {
-        const onChange = jest.fn();
+        const onChange = vi.fn();
         const { getByTestId } = render(<IntlInputNumber onChange={onChange} />);
         const input = getByTestId("intl-input-number");
         fireEvent.input(input, { target: { value: "1234.56" } });
@@ -39,29 +40,28 @@ describe("IntlInputNumber", () => {
         const { getByTestId } = render(
             <IntlInputNumber
                 value={1234.56}
-                onChange={jest.fn()}
+                onChange={vi.fn}
                 options={{
                     currency: "EUR",
-                    formatStyle: NumberFormatStyle.Currency
+                    formatStyle: NumberFormatStyle.Currency,
                 }}
-            />
+            />,
         );
         expect(getByTestId("intl-input-number")).toHaveValue("€1,234.56");
     });
 
     describe("Min and Max range", () => {
-
         it("uses min and max range with percentage values", () => {
-            const onChange = jest.fn();
+            const onChange = vi.fn();
             const { getByTestId } = render(
                 <IntlInputNumber
                     value={45}
                     onChange={onChange}
                     options={{
                         formatStyle: NumberFormatStyle.Percent,
-                        valueRange: { min: 0.1, max: 0.5 }
+                        valueRange: { min: 0.1, max: 0.5 },
                     }}
-                />
+                />,
             );
             const input = getByTestId("intl-input-number");
             // Set value to 0, which is below the min range
