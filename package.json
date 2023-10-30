@@ -1,7 +1,7 @@
 {
     "name": "@3dsteam/react-intl-number-input",
     "packageManager": "yarn@4.0.1",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A React component that allows to use input `type=number` with a localized format",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
