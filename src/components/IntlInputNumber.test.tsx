@@ -20,7 +20,7 @@ describe("IntlInputNumber", () => {
 
     it("renders initial value with specified locale", () => {
         const { getByTestId } = render(
-            <IntlInputNumber value={1234.56} onChange={jest.fn()} options={{ locale: "it-IT" }} />,
+            <IntlInputNumber value={1234.56} onChange={jest.fn()} options={{ locale: "it-IT" }} />
         );
         expect(getByTestId("intl-input-number")).toHaveValue("1.234,56");
     });
@@ -42,10 +42,40 @@ describe("IntlInputNumber", () => {
                 onChange={jest.fn()}
                 options={{
                     currency: "EUR",
-                    formatStyle: NumberFormatStyle.Currency,
+                    formatStyle: NumberFormatStyle.Currency
                 }}
-            />,
+            />
         );
         expect(getByTestId("intl-input-number")).toHaveValue("€1,234.56");
+    });
+
+    describe("Min and Max range", () => {
+
+        it("uses min and max range with percentage values", () => {
+            const onChange = jest.fn();
+            const { getByTestId } = render(
+                <IntlInputNumber
+                    value={45}
+                    onChange={onChange}
+                    options={{
+                        formatStyle: NumberFormatStyle.Percent,
+                        valueRange: { min: 0.1, max: 0.5 }
+                    }}
+                />
+            );
+            const input = getByTestId("intl-input-number");
+            // Set value to 0, which is below the min range
+            fireEvent.input(input, { target: { value: "0" } });
+            fireEvent.blur(input);
+            expect(onChange).toHaveBeenCalledWith({ number: 0.1, formatted: "10%" });
+            // Set value to 100, which is above the max range
+            fireEvent.input(input, { target: { value: "100" } });
+            fireEvent.blur(input);
+            expect(onChange).toHaveBeenCalledWith({ number: 0.5, formatted: "50%" });
+            // Set valid value
+            fireEvent.input(input, { target: { value: "30" } });
+            fireEvent.blur(input);
+            expect(onChange).toHaveBeenCalledWith({ number: 0.3, formatted: "30%" });
+        });
     });
 });
